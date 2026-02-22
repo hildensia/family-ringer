@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /groups/{groupId} {
+
+      // Only members can read the group doc
+      allow read: if request.auth != null && isMember(groupId);
+
+      // Nobody can write directly — only Cloud Functions (admin SDK) can
+      allow write: if false;
+
+      match /members/{memberId} {
+
+        // Only members of this group can read the members list
+        allow read: if request.auth != null && isMember(groupId);
+
+        // Members can only update their own doc, and only the fcmToken field
+        allow update: if request.auth != null
+            && request.auth.uid == memberId
+            && isMember(groupId)
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['fcmToken']);
+
+        // No direct creates or deletes — only Cloud Functions
+        allow create, delete: if false;
+      }
+    }
+
+    function isMember(groupId) {
+      return exists(
+        /databases/$(database)/documents/groups/$(groupId)/members/$(request.auth.uid)
+      );
+    }
+  }
+}
