@@ -23,7 +23,8 @@ public class SetupWizardActivity extends AppCompatActivity {
         registerForActivityResult(new ScanContract(), result -> {
             if (result.getContents() != null) {
                 scannedGroupId = result.getContents();
-                binding.textScannedGroup.setText("✅ Group scanned: " + scannedGroupId.substring(0, 8) + "...");
+                binding.textScannedGroup.setText(getString(R.string.toast_group_scanned,
+                        scannedGroupId.substring(0, 8)));
                 binding.textScannedGroup.setVisibility(View.VISIBLE);
                 binding.btnJoinConfirm.setVisibility(View.VISIBLE);
             }
@@ -67,7 +68,7 @@ public class SetupWizardActivity extends AppCompatActivity {
 
     private void scanQr() {
         ScanOptions options = new ScanOptions();
-        options.setPrompt("Scan the QR code shown on the parent device");
+        options.setPrompt(getString(R.string.scan_prompt));
         options.setBeepEnabled(true);
         options.setOrientationLocked(true);
         qrLauncher.launch(options);
@@ -78,7 +79,7 @@ public class SetupWizardActivity extends AppCompatActivity {
         String creatorName = binding.editCreatorName.getText().toString().trim();
 
         if (groupName.isEmpty() || creatorName.isEmpty()) {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_fill_fields), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -97,7 +98,7 @@ public class SetupWizardActivity extends AppCompatActivity {
                     })
                     .addOnFailureListener(e -> {
                         setLoading(false);
-                        Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, getString(R.string.error_generic, e.getMessage()), Toast.LENGTH_LONG).show();
                     });
             });
         });
@@ -105,7 +106,7 @@ public class SetupWizardActivity extends AppCompatActivity {
 
     private void joinGroup() {
         if (scannedGroupId == null) {
-            Toast.makeText(this, "Please scan a QR code first", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_scan_first), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -113,7 +114,7 @@ public class SetupWizardActivity extends AppCompatActivity {
         String role = binding.radioParent.isChecked() ? "parent" : "child";
 
         if (name.isEmpty()) {
-            Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_enter_name), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -130,7 +131,7 @@ public class SetupWizardActivity extends AppCompatActivity {
                     })
                     .addOnFailureListener(e -> {
                         setLoading(false);
-                        Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, getString(R.string.error_generic, e.getMessage()), Toast.LENGTH_LONG).show();
                     });
             });
         });
@@ -143,7 +144,8 @@ public class SetupWizardActivity extends AppCompatActivity {
             FirebaseAuth.getInstance().signInAnonymously()
                 .addOnSuccessListener(r -> action.run())
                 .addOnFailureListener(e -> Toast.makeText(this,
-                    "Auth failed: " + e.getMessage(), Toast.LENGTH_LONG).show());
+                        getString(R.string.error_auth_failed, e.getMessage()),
+                        Toast.LENGTH_LONG).show());
         }
     }
 

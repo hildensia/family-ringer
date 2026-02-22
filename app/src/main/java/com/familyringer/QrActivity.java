@@ -29,16 +29,16 @@ public class QrActivity extends AppCompatActivity {
         boolean firstSetup = getIntent().getBooleanExtra("first_setup", false);
 
         if (firstSetup) {
-            binding.textQrTitle.setText("Group created! 🎉");
-            binding.textQrSubtitle.setText("Scan this QR code on each family member's phone to join \"" + session.getGroupName() + "\"");
-            binding.btnDone.setText("Open Family Ringer →");
+            binding.textQrTitle.setText(getString(R.string.qr_created_title));
+            binding.textQrSubtitle.setText(getString(R.string.qr_created_subtitle, session.getGroupName()));
+            binding.btnDone.setText(getString(R.string.btn_open_app));
         } else {
-            binding.textQrTitle.setText("Invite to group");
-            binding.textQrSubtitle.setText("Scan this on another device to join \"" + session.getGroupName() + "\"");
-            binding.btnDone.setText("Done");
+            binding.textQrTitle.setText(getString(R.string.qr_invite_title));
+            binding.textQrSubtitle.setText(getString(R.string.qr_invite_subtitle, session.getGroupName()));
+            binding.btnDone.setText(getString(R.string.btn_done));
         }
 
-        binding.textGroupId.setText("Group: " + groupId);
+        binding.textGroupId.setText(getString(R.string.label_group, groupId));
         generateQr(groupId);
 
         binding.btnDone.setOnClickListener(v -> {
@@ -63,7 +63,7 @@ public class QrActivity extends AppCompatActivity {
             }
             binding.imageQr.setImageBitmap(bitmap);
         } catch (WriterException e) {
-            binding.textQrSubtitle.setText("Error generating QR code");
+            binding.textQrSubtitle.setText(getString(R.string.error_generic, "QR generation failed"));
         }
     }
 }

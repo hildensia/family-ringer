@@ -32,15 +32,15 @@ public class SettingsActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Settings");
+            getSupportActionBar().setTitle(getString(R.string.settings_title));
         }
 
         session = new SessionManager(this);
 
         // Info
-        binding.textGroupName.setText("Group: " + session.getGroupName());
-        binding.textRole.setText("Role: " + session.getRole());
-        binding.textName.setText("Name: " + session.getName());
+        binding.textGroupName.setText(getString(R.string.label_group, session.getGroupName()));
+        binding.textRole.setText(getString(R.string.label_role, session.getRole()));
+        binding.textName.setText(getString(R.string.label_name, session.getName()));
 
         // Alert editor — parents only
         if (session.isParent()) {
@@ -76,11 +76,9 @@ public class SettingsActivity extends AppCompatActivity {
                 return;
             } catch (JSONException ignored) {}
         }
-        alerts.add("🍽️ Dinner is ready!");
-        alerts.add("🚗 Training time!");
-        alerts.add("😴 Time for bed!");
-        alerts.add("📚 Homework time!");
-        alerts.add("🏠 Come home now!");
+        // Load defaults from i18n resources
+        String[] defaults = getResources().getStringArray(R.array.default_alerts);
+        for (String a : defaults) alerts.add(a);
     }
 
     private void setupAlertEditor() {
@@ -117,13 +115,13 @@ public class SettingsActivity extends AppCompatActivity {
         binding.btnPickSound.setOnClickListener(v -> {
             Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
             intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
-            intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "Choose alert sound");
+            intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE,
+                    getString(R.string.ringtone_picker_title));
             intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, false);
             String current = session.getAlertSoundUri();
             if (current != null) {
                 intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse(current));
             } else {
-                // Pre-select the default notification sound
                 intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI,
                         RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
             }
@@ -133,7 +131,7 @@ public class SettingsActivity extends AppCompatActivity {
         binding.btnResetSound.setOnClickListener(v -> {
             session.saveAlertSoundUri(null);
             updateSoundLabel(null);
-            Toast.makeText(this, "Reset to default notification sound", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.sound_reset), Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -143,16 +141,15 @@ public class SettingsActivity extends AppCompatActivity {
                 Ringtone ringtone = RingtoneManager.getRingtone(this, Uri.parse(uri));
                 binding.textCurrentSound.setText("🔔 " + ringtone.getTitle(this));
             } catch (Exception e) {
-                binding.textCurrentSound.setText("🔔 Custom sound");
+                binding.textCurrentSound.setText(getString(R.string.sound_custom));
             }
         } else {
-            // Show default notification sound name
             try {
                 Uri defaultUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
                 Ringtone ringtone = RingtoneManager.getRingtone(this, defaultUri);
                 binding.textCurrentSound.setText("🔔 " + ringtone.getTitle(this) + " (default)");
             } catch (Exception e) {
-                binding.textCurrentSound.setText("🔔 Default notification sound");
+                binding.textCurrentSound.setText(getString(R.string.sound_default));
             }
         }
     }
@@ -165,7 +162,7 @@ public class SettingsActivity extends AppCompatActivity {
             if (uri != null) {
                 session.saveAlertSoundUri(uri.toString());
                 updateSoundLabel(uri.toString());
-                Toast.makeText(this, "Sound updated!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.sound_updated), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -181,7 +178,6 @@ public class SettingsActivity extends AppCompatActivity {
         binding.seekbarVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // Minimum 10% so it's always audible
                 int clamped = Math.max(progress, 10);
                 binding.textVolumeValue.setText(clamped + "%");
             }
@@ -191,7 +187,7 @@ public class SettingsActivity extends AppCompatActivity {
                 int clamped = Math.max(seekBar.getProgress(), 10);
                 session.saveAlertVolume(clamped);
                 Toast.makeText(SettingsActivity.this,
-                        "Volume set to " + clamped + "%", Toast.LENGTH_SHORT).show();
+                        getString(R.string.volume_set, clamped), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -201,17 +197,14 @@ public class SettingsActivity extends AppCompatActivity {
     private void setupDuration() {
         int duration = session.getAlertDuration();
 
-        // Map duration seconds to spinner position
-        // 0 = don't stop, 15, 30, 60, 120 seconds
         int[] durations = {0, 15, 30, 60, 120};
-        String[] labels = {"Until dismissed", "15 seconds", "30 seconds", "1 minute", "2 minutes"};
+        String[] labels = getResources().getStringArray(R.array.duration_labels);
 
         android.widget.ArrayAdapter<String> adapter = new android.widget.ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, labels);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerDuration.setAdapter(adapter);
 
-        // Select current value
         int selectedIndex = 0;
         for (int i = 0; i < durations.length; i++) {
             if (durations[i] == duration) { selectedIndex = i; break; }
