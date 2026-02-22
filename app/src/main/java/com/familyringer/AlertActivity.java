@@ -30,6 +30,7 @@ public class AlertActivity extends AppCompatActivity {
             binding.textAlertMessage.setText(message);
         }
 
+        binding.textAlertTitle.setText(getString(R.string.alert_title));
         binding.btnDismiss.setOnClickListener(v -> {
             // Stop alarm sound
             stopService(new Intent(this, AlarmService.class));

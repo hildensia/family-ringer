@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             .collect(Collectors.toList());
 
         if (selectedIds.isEmpty()) {
-            Toast.makeText(this, "Select at least one person first", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_select_member), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -136,11 +136,11 @@ public class MainActivity extends AppCompatActivity {
             .addOnSuccessListener(result -> {
                 binding.progressSend.setVisibility(View.GONE);
                 int sent = ((Number) result.get("sent")).intValue();
-                Toast.makeText(this, "📣 Alert sent to " + sent + " device(s)!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_alert_sent, sent), Toast.LENGTH_SHORT).show();
             })
             .addOnFailureListener(e -> {
                 binding.progressSend.setVisibility(View.GONE);
-                Toast.makeText(this, "Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.toast_send_failed, e.getMessage()), Toast.LENGTH_LONG).show();
             });
     }
 
@@ -150,8 +150,9 @@ public class MainActivity extends AppCompatActivity {
         binding.cardMembers.setVisibility(View.GONE);
         binding.cardAlerts.setVisibility(View.GONE);
         binding.cardChild.setVisibility(View.VISIBLE);
-        binding.textChildName.setText("👋 Hi, " + session.getName() + "!");
-        binding.textChildGroup.setText("Group: " + session.getGroupName());
+        binding.textChildName.setText(getString(R.string.child_greeting, session.getName()));
+        binding.textChildGroup.setText(getString(R.string.label_group, session.getGroupName()));
+        binding.labelMode.setText(getString(R.string.child_waiting));
     }
 
     // ── Alerts ────────────────────────────────────────────────────────────────
@@ -167,11 +168,9 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException ignored) {}
         }
         // Defaults
-        alerts.add("🍽️ Dinner is ready!");
-        alerts.add("🚗 Training time!");
-        alerts.add("😴 Time for bed!");
-        alerts.add("📚 Homework time!");
-        alerts.add("🏠 Come home now!");
+        String[] defaults = getResources().getStringArray(R.array.default_alerts);
+        for (String a : defaults) alerts.add(a);
+
         saveAlerts();
     }
 

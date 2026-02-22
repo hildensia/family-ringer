@@ -151,9 +151,9 @@
                         android:layout_marginBottom="16dp"/>
 
                     <TextView
+                        android:id="@+id/labelMode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Waiting for alerts from your family..."
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
                         android:gravity="center"/>

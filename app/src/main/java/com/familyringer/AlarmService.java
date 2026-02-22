@@ -27,11 +27,11 @@ public class AlarmService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         createServiceChannel();
 
-        String message = intent != null ? intent.getStringExtra("message") : "Alert!";
+        String message = intent != null ? intent.getStringExtra("message") : getString(R.string.default_alert_message);
 
         Notification notification = new NotificationCompat.Builder(this, NOTIF_CHANNEL)
                 .setSmallIcon(R.drawable.ic_bell)
-                .setContentTitle("📣 Family Alert")
+                .setContentTitle(getString(R.string.notif_service_title))
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .build();
@@ -85,7 +85,7 @@ public class AlarmService extends Service {
     private void createServiceChannel() {
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         NotificationChannel ch = new NotificationChannel(
-                NOTIF_CHANNEL, "Alarm Service", NotificationManager.IMPORTANCE_LOW);
+                NOTIF_CHANNEL, getString(R.string.notif_service_channel), NotificationManager.IMPORTANCE_LOW);
         nm.createNotificationChannel(ch);
     }
 

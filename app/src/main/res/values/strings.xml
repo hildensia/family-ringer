@@ -1,4 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App -->
     <string name="app_name">Family Ringer</string>
+
+    <!-- Main screen -->
+    <string name="send_to">📱 Send to…</string>
+    <string name="no_members">No other members yet. Share the QR code to invite family members.</string>
+    <string name="choose_alert">📢 Choose alert</string>
+    <string name="child_waiting">Waiting for alerts from your family…</string>
+    <string name="child_greeting">👋 Hi, %s!</string>
+
+    <!-- Setup wizard -->
+    <string name="setup_tagline">Ring your kids — even on silent</string>
+    <string name="btn_create_group">🏠 Create a new family group</string>
+    <string name="btn_join_group">📷 Join with QR code</string>
+    <string name="create_group_title">Create your family group</string>
+    <string name="hint_group_name">Family name (e.g. The Smiths)</string>
+    <string name="hint_creator_name">Your name (e.g. Dad)</string>
+    <string name="default_group_name">My Family</string>
+    <string name="btn_create_confirm">Create group →</string>
+    <string name="join_group_title">Join a family group</string>
+    <string name="btn_scan_qr">📷 Scan QR Code</string>
+    <string name="hint_join_name">Your name (e.g. Emma)</string>
+    <string name="role_parent">👨 Parent</string>
+    <string name="role_child">👦 Child</string>
+    <string name="btn_join_confirm">Join group →</string>
+    <string name="scan_prompt">Scan the QR code shown on the parent device</string>
+    <string name="error_fill_fields">Please fill in all fields</string>
+    <string name="error_scan_first">Please scan a QR code first</string>
+    <string name="error_enter_name">Please enter your name</string>
+    <string name="error_auth_failed">Auth failed: %s</string>
+    <string name="error_generic">Error: %s</string>
+
+    <!-- QR screen -->
+    <string name="qr_created_title">Group created! 🎉</string>
+    <string name="qr_created_subtitle">Scan this QR code on each family member\'s phone to join \"%s\"</string>
+    <string name="qr_invite_title">Invite to group</string>
+    <string name="qr_invite_subtitle">Scan this on another device to join \"%s\"</string>
+    <string name="btn_open_app">Open Family Ringer →</string>
+    <string name="btn_done">Done</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="profile_title">ℹ️ Your Profile</string>
+    <string name="label_group">Group: %s</string>
+    <string name="label_role">Role: %s</string>
+    <string name="label_name">Name: %s</string>
+    <string name="sound_title">🔔 Alert Sound</string>
+    <string name="sound_default">🔔 Default notification sound</string>
+    <string name="sound_custom">🔔 Custom sound</string>
+    <string name="btn_choose_sound">Choose sound</string>
+    <string name="btn_reset_sound">Reset to default</string>
+    <string name="sound_updated">Sound updated!</string>
+    <string name="sound_reset">Reset to default notification sound</string>
+    <string name="volume_title">🔊 Volume</string>
+    <string name="volume_set">Volume set to %d%%</string>
+    <string name="duration_title">⏱️ Ring duration</string>
+    <string name="alerts_title">📢 Alert Messages</string>
+    <string name="hint_new_alert">Add new alert message</string>
+    <string name="btn_add_alert">+ Add Alert</string>
+    <string name="btn_leave_group">Leave Group</string>
+    <string name="ringtone_picker_title">Choose alert sound</string>
+
+    <!-- Duration options -->
+    <string-array name="duration_labels">
+        <item>Until dismissed</item>
+        <item>15 seconds</item>
+        <item>30 seconds</item>
+        <item>1 minute</item>
+        <item>2 minutes</item>
+    </string-array>
+
+    <!-- Alert activity -->
+    <string name="alert_title">FAMILY ALERT</string>
+    <string name="btn_got_it">✓ GOT IT</string>
+
+    <!-- Notifications -->
+    <string name="notif_alert_title">📣 Family Alert!</string>
+    <string name="notif_alert_channel">Family Alerts</string>
+    <string name="notif_service_channel">Alarm Service</string>
+    <string name="notif_service_title">📣 Family Alert</string>
+    <string name="default_alert_message">Alert!</string>
+
+    <!-- Menu -->
+    <string name="menu_invite">Invite (QR)</string>
+    <string name="menu_settings">Settings</string>
+
+    <!-- Default alerts -->
+    <string-array name="default_alerts">
+        <item>🍽️ Dinner is ready!</item>
+        <item>🚗 Training time!</item>
+        <item>😴 Time for bed!</item>
+        <item>📚 Homework time!</item>
+        <item>🏠 Come home now!</item>
+    </string-array>
+
+    <!-- Toast messages -->
+    <string name="toast_select_member">Select at least one person first</string>
+    <string name="toast_alert_sent">📣 Alert sent to %d device(s)!</string>
+    <string name="toast_send_failed">Failed: %s</string>
+    <string name="toast_group_scanned">✅ Group scanned: %s…</string>
 </resources>

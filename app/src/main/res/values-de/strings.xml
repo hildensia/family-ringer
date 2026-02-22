@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Family Ringer</string>
+
+    <!-- Main screen -->
+    <string name="send_to">📱 Senden an…</string>
+    <string name="no_members">Noch keine Mitglieder. Teile den QR-Code um Familienmitglieder einzuladen.</string>
+    <string name="choose_alert">📢 Benachrichtigung wählen</string>
+    <string name="child_waiting">Warte auf Benachrichtigungen deiner Familie…</string>
+    <string name="child_greeting">👋 Hallo, %s!</string>
+
+    <!-- Setup wizard -->
+    <string name="setup_tagline">Ruf deine Kinder — auch im Lautlos-Modus</string>
+    <string name="btn_create_group">🏠 Neue Familiengruppe erstellen</string>
+    <string name="btn_join_group">📷 Mit QR-Code beitreten</string>
+    <string name="create_group_title">Familiengruppe erstellen</string>
+    <string name="hint_group_name">Familienname (z.B. Familie Müller)</string>
+    <string name="hint_creator_name">Dein Name (z.B. Papa)</string>
+    <string name="default_group_name">Meine Familie</string>
+    <string name="btn_create_confirm">Gruppe erstellen →</string>
+    <string name="join_group_title">Familiengruppe beitreten</string>
+    <string name="btn_scan_qr">📷 QR-Code scannen</string>
+    <string name="hint_join_name">Dein Name (z.B. Emma)</string>
+    <string name="role_parent">👨 Elternteil</string>
+    <string name="role_child">👦 Kind</string>
+    <string name="btn_join_confirm">Gruppe beitreten →</string>
+    <string name="scan_prompt">Scanne den QR-Code auf dem Eltern-Gerät</string>
+    <string name="error_fill_fields">Bitte alle Felder ausfüllen</string>
+    <string name="error_scan_first">Bitte zuerst einen QR-Code scannen</string>
+    <string name="error_enter_name">Bitte Namen eingeben</string>
+    <string name="error_auth_failed">Anmeldung fehlgeschlagen: %s</string>
+    <string name="error_generic">Fehler: %s</string>
+
+    <!-- QR screen -->
+    <string name="qr_created_title">Gruppe erstellt! 🎉</string>
+    <string name="qr_created_subtitle">Scanne diesen QR-Code auf jedem Familiengerät um \"%s\" beizutreten</string>
+    <string name="qr_invite_title">Zur Gruppe einladen</string>
+    <string name="qr_invite_subtitle">Auf einem anderen Gerät scannen um \"%s\" beizutreten</string>
+    <string name="btn_open_app">Family Ringer öffnen →</string>
+    <string name="btn_done">Fertig</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="profile_title">ℹ️ Dein Profil</string>
+    <string name="label_group">Gruppe: %s</string>
+    <string name="label_role">Rolle: %s</string>
+    <string name="label_name">Name: %s</string>
+    <string name="sound_title">🔔 Benachrichtigungston</string>
+    <string name="sound_default">🔔 Standard-Benachrichtigungston</string>
+    <string name="sound_custom">🔔 Benutzerdefinierter Ton</string>
+    <string name="btn_choose_sound">Ton wählen</string>
+    <string name="btn_reset_sound">Zurücksetzen</string>
+    <string name="sound_updated">Ton aktualisiert!</string>
+    <string name="sound_reset">Standard-Benachrichtigungston wiederhergestellt</string>
+    <string name="volume_title">🔊 Lautstärke</string>
+    <string name="volume_set">Lautstärke auf %d%% gesetzt</string>
+    <string name="duration_title">⏱️ Klingeldauer</string>
+    <string name="alerts_title">📢 Benachrichtigungen</string>
+    <string name="hint_new_alert">Neue Benachrichtigung hinzufügen</string>
+    <string name="btn_add_alert">+ Hinzufügen</string>
+    <string name="btn_leave_group">Gruppe verlassen</string>
+    <string name="ringtone_picker_title">Benachrichtigungston wählen</string>
+
+    <!-- Duration options -->
+    <string-array name="duration_labels">
+        <item>Bis zum Bestätigen</item>
+        <item>15 Sekunden</item>
+        <item>30 Sekunden</item>
+        <item>1 Minute</item>
+        <item>2 Minuten</item>
+    </string-array>
+
+    <!-- Alert activity -->
+    <string name="alert_title">FAMILIENALARM</string>
+    <string name="btn_got_it">✓ VERSTANDEN</string>
+
+    <!-- Notifications -->
+    <string name="notif_alert_title">📣 Familienalarm!</string>
+    <string name="notif_alert_channel">Familienalarme</string>
+    <string name="notif_service_channel">Alarm-Dienst</string>
+    <string name="notif_service_title">📣 Familienalarm</string>
+    <string name="default_alert_message">Alarm!</string>
+
+    <!-- Menu -->
+    <string name="menu_invite">Einladen (QR)</string>
+    <string name="menu_settings">Einstellungen</string>
+
+    <!-- Default alerts -->
+    <string-array name="default_alerts">
+        <item>🍽️ Essen ist fertig!</item>
+        <item>🚗 Training!</item>
+        <item>😴 Zeit zum Schlafen!</item>
+        <item>📚 Hausaufgaben!</item>
+        <item>🏠 Komm nach Hause!</item>
+    </string-array>
+
+    <!-- Toast messages -->
+    <string name="toast_select_member">Bitte mindestens eine Person auswählen</string>
+    <string name="toast_alert_sent">📣 Alarm an %d Gerät(e) gesendet!</string>
+    <string name="toast_send_failed">Fehler: %s</string>
+    <string name="toast_group_scanned">✅ Gruppe gescannt: %s…</string>
+</resources>

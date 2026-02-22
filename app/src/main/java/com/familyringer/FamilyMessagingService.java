@@ -41,7 +41,7 @@ public class FamilyMessagingService extends FirebaseMessagingService {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_bell)
-            .setContentTitle("📣 Family Alert!")
+            .setContentTitle(getString(R.string.notif_alert_title))
             .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_MAX)
             .setCategory(NotificationCompat.CATEGORY_ALARM)
@@ -71,7 +71,7 @@ public class FamilyMessagingService extends FirebaseMessagingService {
         // Delete and recreate the channel to force importance update
         nm.deleteNotificationChannel(CHANNEL_ID);
         NotificationChannel channel = new NotificationChannel(
-                CHANNEL_ID, "Family Alerts", NotificationManager.IMPORTANCE_HIGH);
+                CHANNEL_ID, getString(R.string.notif_alert_channel), NotificationManager.IMPORTANCE_HIGH);
         channel.enableVibration(true);
         channel.setVibrationPattern(new long[]{0, 500, 200, 500});
         channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
