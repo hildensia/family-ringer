@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary"
-        app:title="📣 Family Ringer"
+        app:title="@string/app_name"
         app:titleTextColor="@color/white"
         app:subtitleTextColor="@color/white"/>
 
@@ -52,7 +52,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📱 Send to..."
+                        android:text="@string/send_to"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
@@ -62,7 +62,7 @@
                         android:id="@+id/textNoMembers"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No other members yet. Share the QR code to invite family members."
+                        android:text="@string/no_members"
                         android:textSize="13sp"
                         android:textColor="@color/text_secondary"
                         android:visibility="gone"/>
@@ -95,7 +95,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📢 Choose alert"
+                        android:text="@string/choose_alert"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"

@@ -40,7 +40,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ℹ️ Your Profile"
+                        android:text="@string/profile_title"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
@@ -77,7 +77,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🔔 Alert Sound"
+                        android:text="@string/profile_title"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
@@ -98,14 +98,14 @@
                             android:id="@+id/btnPickSound"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Choose sound"
+                            android:text="@string/profile_title"
                             android:layout_marginEnd="8dp"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnResetSound"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Reset to default"
+                            android:text="@string/btn_reset_sound"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
                     </LinearLayout>
 
@@ -124,7 +124,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="🔊 Volume"
+                            android:text="@string/volume_title"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"/>
@@ -150,7 +150,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="⏱️ Ring duration"
+                        android:text="@string/duration_title"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
@@ -179,7 +179,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📢 Alert Messages"
+                        android:text="@string/alerts_title"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
@@ -199,13 +199,13 @@
                             android:id="@+id/editNewAlert"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Add new alert message"/>
+                            android:hint="@string/hint_new_alert"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnAddAlert"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+ Add Alert"/>
+                        android:text="@string/btn_add_alert"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -214,7 +214,7 @@
                 android:id="@+id/btnLeaveGroup"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:text="Leave Group"
+                android:text="@string/btn_leave_group"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:textColor="@color/error"/>
 

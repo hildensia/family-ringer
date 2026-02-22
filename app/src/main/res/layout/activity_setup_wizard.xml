@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Family Ringer"
+            android:text="@string/app_name"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/primary"
@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ring your kids — even on silent"
+            android:text="@string/child_waiting"
             android:textSize="15sp"
             android:textColor="@color/text_secondary"
             android:layout_marginBottom="40dp"/>
@@ -56,14 +56,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_marginBottom="12dp"
-                android:text="🏠 Create a new family group"
+                android:text="@string/btn_create_group"
                 android:textSize="16sp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnJoin"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
-                android:text="📷 Join with QR code"
+                android:text="@string/btn_join_group"
                 android:textSize="16sp"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
@@ -80,7 +80,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create your family group"
+                android:text="@string/create_group_title"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary"
@@ -95,8 +95,8 @@
                     android:id="@+id/editGroupName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Family name (e.g. The Smiths)"
-                    android:text="My Family"/>
+                    android:hint="@string/hint_group_name"
+                    android:text="@string/default_group_name"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -108,14 +108,14 @@
                     android:id="@+id/editCreatorName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Your name (e.g. Dad)"/>
+                    android:hint="@string/hint_creator_name"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCreateConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:text="Create group →"/>
+                android:text="@string/btn_create_confirm"/>
 
         </LinearLayout>
 
@@ -130,7 +130,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Join a family group"
+                android:text="@string/join_group_title"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary"
@@ -140,7 +140,7 @@
                 android:id="@+id/btnScanQr"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:text="📷 Scan QR Code"
+                android:text="@string/btn_scan_qr"
                 android:layout_marginBottom="12dp"/>
 
             <TextView
@@ -161,7 +161,7 @@
                     android:id="@+id/editJoinName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Your name (e.g. Emma)"/>
+                    android:hint="@string/hint_join_name"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <RadioGroup
@@ -175,14 +175,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="👨 Parent"/>
+                    android:text="@string/role_parent"/>
 
                 <RadioButton
                     android:id="@+id/radioChild"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="👦 Child"
+                    android:text="@string/role_child"
                     android:checked="true"/>
 
             </RadioGroup>
@@ -191,7 +191,7 @@
                 android:id="@+id/btnJoinConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:text="Join group →"
+                android:text="@string/btn_join_confirm"
                 android:visibility="gone"/>
 
         </LinearLayout>
