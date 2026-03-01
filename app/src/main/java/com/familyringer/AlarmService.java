@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -60,7 +61,17 @@ public class AlarmService extends Service {
                     .setUsage(AudioAttributes.USAGE_ALARM)
                     .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                     .build());
-            mediaPlayer.setDataSource(getApplicationContext(), soundUri);
+            AssetFileDescriptor afd =
+                    getContentResolver().openAssetFileDescriptor(soundUri, "r");
+            if (afd != null) {
+                mediaPlayer.setDataSource(afd.getFileDescriptor(),
+                        afd.getStartOffset(), afd.getLength());
+                afd.close();
+            } else {
+                // fallback to default
+                Uri fallback = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                mediaPlayer.setDataSource(getApplicationContext(), fallback);
+            }
             mediaPlayer.setLooping(true);
             mediaPlayer.prepare();
             mediaPlayer.start();
