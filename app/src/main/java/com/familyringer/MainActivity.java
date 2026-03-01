@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             showChildUI();
         }
+        setupStopButton();
     }
 
     // ── Parent UI ─────────────────────────────────────────────────────────────
@@ -205,5 +206,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         if (membersListener != null) membersListener.remove();
+    }
+
+    private void setupStopButton() {
+        binding.btnStopAlert.setOnClickListener(v -> {
+            stopService(new Intent(this, AlarmService.class));
+            binding.btnStopAlert.setVisibility(View.GONE);
+        });
+    }
+    private boolean isAlarmRunning() {
+        android.app.ActivityManager am =
+                (android.app.ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        for (android.app.ActivityManager.RunningServiceInfo service :
+                am.getRunningServices(Integer.MAX_VALUE)) {
+            if (AlarmService.class.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        binding.btnStopAlert.setVisibility(
+                isAlarmRunning() ? View.VISIBLE : View.GONE);
     }
 }

@@ -23,6 +23,15 @@
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:indeterminate="true"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStopAlert"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="🔇 Stop Alert"
+        android:visibility="gone"
+        android:backgroundTint="@color/error"
+        android:layout_margin="16dp"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
